@@ -23,7 +23,6 @@ contract LotterSystem {
          return address(this).balance; 
      }
 
-
      function Get_Winner() public {
 
        require(participants.length>=3, "Participants Shoud be greater than 3");

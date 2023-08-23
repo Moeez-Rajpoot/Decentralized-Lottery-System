@@ -13,7 +13,7 @@ contract LotterSystem {
 
      receive() payable external {
  
-        require(msg.value== 2 ether , "Entry Fee Must Be 2 Ethers");
+        require(msg.value== 2 ether , "Lotter Ticket Price is 2 Ethers");
         participants.push(payable(msg.sender));
          
      }

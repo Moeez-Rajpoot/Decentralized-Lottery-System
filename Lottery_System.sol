@@ -19,7 +19,7 @@ contract LotterSystem {
      }
 
      function Check_Balance() public view returns(uint){
-         require(msg.sender==manager, "Not Allowed");
+         require(msg.sender==manager, "Only Manager is Allowed to Access");
          return address(this).balance; 
      }
 

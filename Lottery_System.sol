@@ -3,11 +3,11 @@ pragma solidity 0.8.21;
 
 contract LotterSystem {
 
-    address payable public manager;
+    address public manager;
     address payable[] public participants;
 
      constructor() {
-         manager=payable(msg.sender);
+         manager=msg.sender;
      }
 
 
@@ -24,10 +24,13 @@ contract LotterSystem {
      }
 
 
-     function GenerateRandom() public view returns(uint){
+     function Get_Winner() public {
 
-
-       return uint(keccak256(abi.encodePacked(block.difficulty,block.timestamp,participants.length)));
+       require(participants.length>=3, "Participants Shoud be greater than 3");
+       require(msg.sender==manager, "Only Manager Can Call");
+       uint Index = uint(keccak256(abi.encodePacked(block.prevrandao,block.timestamp,participants.length))) % participants.length;
+       address payable winner = participants[Index];
+       winner.transfer(Check_Balance());
 
      }
     

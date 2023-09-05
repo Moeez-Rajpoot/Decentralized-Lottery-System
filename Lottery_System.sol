@@ -4,6 +4,7 @@ pragma solidity 0.8.21;
 contract LotterSystem {
 
     address public manager;
+    
     address payable[] public participants;
 
      constructor() {
